@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
 
 public class UserOrdersTest extends BaseTest {
 
-    private static String accessToken;
+    private String accessToken;
 
     @Before
     public void setUp() {

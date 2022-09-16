@@ -13,8 +13,8 @@ import static org.junit.Assert.*;
 
 public class OrderCreationTest extends BaseTest {
 
-    private static String accessToken;
-    private static Order order;
+    private String accessToken;
+    private Order order;
 
     @Before
     public void setUp() {

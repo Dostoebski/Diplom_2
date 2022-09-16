@@ -15,8 +15,8 @@ import static org.junit.Assert.*;
 
 public class UserUpdateTest extends BaseTest {
 
-    private static String accessToken;
-    private static User user;
+    private String accessToken;
+    private User user;
 
     @Before
     public void setUp() {
