@@ -1,19 +1,29 @@
 package model;
 
-import java.util.List;
+import io.restassured.response.Response;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+import util.StellarBurgersClient;
 
+import java.util.ArrayList;
+import java.util.List;
+@AllArgsConstructor
+@Getter
+@Setter
 public class Order {
+
     private List<String> ingredients;
 
-    public Order(List<String> ingredients) {
-        this.ingredients = ingredients;
-    }
+    public static Order getDefaultOrder(StellarBurgersClient client) {
 
-    public List<String> getIngredients() {
-        return ingredients;
-    }
+        Response response = client.getIngredients();
 
-    public void setIngredients(List<String> ingredients) {
-        this.ingredients = ingredients;
+        List<String> ingredients = new ArrayList<>();
+
+        ingredients.add(response.then().extract().path("data._id[0]"));
+        ingredients.add(response.then().extract().path("data._id[1]"));
+
+        return new Order(ingredients);
     }
 }

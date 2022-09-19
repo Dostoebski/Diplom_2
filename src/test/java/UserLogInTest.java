@@ -2,9 +2,7 @@ import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import model.Register;
-import model.RegisterFactory;
 import model.UserCredentials;
-import model.UserCredentialsFactory;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,8 +20,8 @@ public class UserLogInTest extends BaseTest {
 
     @Before
     public void setUp() {
-        register = RegisterFactory.getDefaultRegister();
-        userCredentials = UserCredentialsFactory.getCredentials(register);
+        register = Register.getDefaultRegister();
+        userCredentials = UserCredentials.getCredentials(register);
         accessToken = burgersClient.createUser(register).then().extract().path("accessToken");
     }
 

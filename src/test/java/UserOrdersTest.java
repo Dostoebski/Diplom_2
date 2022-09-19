@@ -16,9 +16,9 @@ public class UserOrdersTest extends BaseTest {
 
     @Before
     public void setUp() {
-        Register register = RegisterFactory.getDefaultRegister();
+        Register register = Register.getDefaultRegister();
         accessToken = burgersClient.createUser(register).then().extract().path("accessToken");
-        Order order = OrderFactory.getDefaultOrder(burgersClient);
+        Order order = Order.getDefaultOrder(burgersClient);
         burgersClient.createOrder(order, accessToken);
     }
 

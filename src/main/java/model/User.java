@@ -1,28 +1,17 @@
 package model;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
+@AllArgsConstructor
+@Getter
+@Setter
 public class User {
     private String email;
     private String name;
 
-    public User(String email, String name) {
-        this.email = email;
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public User setEmail(String email) {
-        this.email = email;
-        return this;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public static User getUser(Register register) {
+        return new User(register.getEmail(), register.getName());
     }
 }

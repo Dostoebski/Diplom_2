@@ -2,7 +2,6 @@ import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import model.Register;
-import model.RegisterFactory;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -18,7 +17,7 @@ public class UserSignInTest extends BaseTest {
 
     @Before
     public void setUp() {
-        register = RegisterFactory.getDefaultRegister();
+        register = Register.getDefaultRegister();
     }
 
     @Test
@@ -79,6 +78,7 @@ public class UserSignInTest extends BaseTest {
         step("Попытаться создать пользователя без email");
         register.setEmail(null);
         Response response = burgersClient.createUser(register);
+        accessToken = response.then().extract().path("accessToken");
 
         step("Проверить, что статус ответа 403");
         int statusCode = response.then().extract().statusCode();
